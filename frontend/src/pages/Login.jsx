@@ -22,37 +22,41 @@ export default function Login() {
 
     return (
         <div className="flex-1 flex flex-col justify-center px-6 pb-20">
-            <div className="bg-gradient-to-b from-[#FFFDD0] to-white p-6 rounded-3xl shadow-lg border border-[#DAA520]/30">
-                <h2 className="text-3xl font-bold text-center mb-2 text-[#DC143C] tracking-tight bounce">Добро пожаловать</h2>
-                <p className="text-center text-sm text-[#006400] mb-8 pulse">Войдите, чтобы продолжить</p>
+            <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(218,165,32,0.15)] border border-[#DAA520]/30 relative overflow-hidden">
+                {/* Декоративная полоса сверху */}
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#DAA520]"></div>
                 
-                <form onSubmit={handleLogin} className="flex flex-col gap-4">
-                    {error && <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-xl border border-red-200">{error}</div>}
+                <h2 className="text-3xl font-bold text-center mb-1 text-[#006400] tracking-tight mt-2">Вход</h2>
+                <p className="text-center text-xs text-[#DAA520] font-bold uppercase tracking-widest mb-8">Банкетам.Нет</p>
+                
+                <form onSubmit={handleLogin} className="flex flex-col gap-5">
+                    {error && <div className="text-[#DC143C] text-sm text-center bg-[#DC143C]/5 py-2 px-3 rounded-lg border border-[#DC143C]/20">{error}</div>}
                     
-                    <div className="relative">
+                    <div className="flex flex-col gap-1">
+                        <label className="text-xs font-semibold text-[#006400] uppercase tracking-wide ml-1">Логин</label>
                         <input 
-                            type="text" placeholder="Логин" required
-                            className="w-full bg-[#FFFDD0] border border-[#DAA520]/50 px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#DAA520] transition-all"
+                            type="text" required
+                            className="w-full bg-[#FFFDD0]/30 border border-[#DAA520]/40 px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-[#DAA520] focus:bg-white transition-all text-[#006400] font-medium"
                             value={login} onChange={e => setLogin(e.target.value)}
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#DAA520] text-lg">@</span>
-                    </div>
-                    <div className="relative">
-                        <input 
-                            type="password" placeholder="Пароль" required
-                            className="w-full bg-[#FFFDD0] border border-[#DAA520]/50 px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#DAA520] transition-all"
-                            value={password} onChange={e => setPassword(e.target.value)}
-                        />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#DAA520] text-lg">•••</span>
                     </div>
                     
-                    <button type="submit" className="w-full bg-[#DAA520] text-white font-semibold py-3 rounded-xl shadow-md hover:bg-[#C8B61D] active:scale-98 transition-all mt-2">
-                        Войти
+                    <div className="flex flex-col gap-1">
+                        <label className="text-xs font-semibold text-[#006400] uppercase tracking-wide ml-1">Пароль</label>
+                        <input 
+                            type="password" required
+                            className="w-full bg-[#FFFDD0]/30 border border-[#DAA520]/40 px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-[#DAA520] focus:bg-white transition-all text-[#006400] font-medium"
+                            value={password} onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    
+                    <button type="submit" className="w-full bg-[#DAA520] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-[#DAA520]/30 hover:bg-[#C8B61D] active:scale-[0.98] transition-all mt-2 text-sm uppercase tracking-wide">
+                        Войти в кабинет
                     </button>
                 </form>
 
-                <div className="text-center mt-6">
-                    <Link to="/register" className="text-[#DAA520] text-sm font-medium hover:text-[#C8B61D] transition-colors">
+                <div className="text-center mt-8">
+                    <Link to="/register" className="text-[#006400] text-sm font-medium hover:text-[#DAA520] transition-colors border-b border-transparent hover:border-[#DAA520] pb-0.5">
                         Создать новый аккаунт
                     </Link>
                 </div>

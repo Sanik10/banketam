@@ -8,28 +8,33 @@ import Admin from './pages/Admin';
 function App() {
   return (
     <BrowserRouter>
-      {/* Внешний фон. На телефоне он будет скрыт под приложением, а на ПК будет красивым фоном */}
-      <div className="flex justify-center min-h-screen bg-slate-200 sm:py-6 sm:px-4">
+      <div className="min-h-screen flex flex-col font-['Oswald']">
         
-        <div className="w-full max-w-[390px] min-h-[100dvh] sm:min-h-[844px] bg-gradient-to-b from-[#FFDAB9] to-[#FFFDD0] relative flex flex-col sm:rounded-[30px] sm:shadow-2xl overflow-hidden">
-          
-          {/* Наша стеклянная шапка (оставляем, она дает стиль iOS) */}
-          <header className="pt-4 pb-3 px-4 text-center font-bold text-lg sticky top-0 z-40 bg-[#DAA520]/80 backdrop-blur-md border-b border-[#DC143C]/50 text-[#DC143C] flex items-center justify-center gap-2">
-            <span className="text-xl">🥂</span> Банкетам.Нет
-          </header>
+        {/* 
+          ИСПРАВЛЕНО: 100% Непрозрачный фон (bg-[#FFFDD0]), 
+          мощная тень (shadow-md) и золотая рамка снизу. 
+          Контент больше никогда не просветит! 
+        */}
+        <header className="bg-[#FFFDD0] border-b-4 border-[#DAA520] shadow-md sticky top-0 z-50">
+          <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-center sm:justify-start gap-4">
+            <img src="/icon_banket.png" alt="Logo" className="h-12 w-auto object-contain drop-shadow-md" />
+            <span className="text-3xl font-bold text-[#5C4033] uppercase tracking-widest drop-shadow-sm mt-1">
+              Банкетам.Нет
+            </span>
+          </div>
+        </header>
 
-          <main className="flex-1 flex flex-col overflow-y-auto hide-scrollbar relative">
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/create-booking" element={<CreateBooking />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="*" element={<Navigate to="/login" replace />} />
-            </Routes>
-          </main>
+        <main className="flex-1 w-full max-w-6xl mx-auto p-4 sm:p-8 flex flex-col relative">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create-booking" element={<CreateBooking />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </main>
 
-        </div>
       </div>
     </BrowserRouter>
   );
