@@ -18,9 +18,7 @@ export default function CreateBooking() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Отправляем данные на бэкенд
             await $host.post('/booking', formData);
-            // Возвращаем пользователя в личный кабинет после успеха
             navigate('/dashboard');
         } catch (err) {
             setError(err.response?.data?.message || 'Ошибка при создании заявки');
@@ -28,25 +26,24 @@ export default function CreateBooking() {
     };
 
     return (
-        <div className="p-4 flex flex-col h-full bg-white">
-            <div className="flex items-center mb-6 border-b pb-3">
-                <button onClick={() => navigate('/dashboard')} className="text-xl mr-3 font-bold text-gray-600 hover:text-black">
+        <div className="p-5 flex flex-col h-full bg-gradient-to-b from-[#FFFDD0] to-white">
+            <div className="flex items-center mb-6 pb-4 border-b border-[#DAA520]/30">
+                <button onClick={() => navigate('/dashboard')} className="text-2xl mr-3 font-bold text-[#DC143C] hover:text-[#B2002C] transition-colors">
                     &larr;
                 </button>
-                <h2 className="text-xl font-bold">Оформление заявки</h2>
+                <h2 className="text-2xl font-bold text-[#DC143C] bounce">Оформление заявки</h2>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                {error && <div className="text-red-500 text-sm text-center bg-red-100 p-2 rounded">{error}</div>}
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                {error && <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-xl border border-red-200">{error}</div>}
                 
-                {/* Выпадающий список помещений */}
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm font-semibold text-gray-700">Выберите помещение:</label>
+                <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-[#006400]">Выберите помещение:</label>
                     <select 
                         name="room_type" 
                         value={formData.room_type} 
                         onChange={handleChange}
-                        className="border p-2 rounded bg-gray-50 focus:outline-blue-500"
+                        className="border border-[#DAA520]/50 p-3 rounded-xl bg-[#FFFDD0] focus:outline-none focus:ring-2 focus:ring-[#DAA520] text-gray-800"
                     >
                         <option value="Зал">Зал</option>
                         <option value="Ресторан">Ресторан</option>
@@ -55,28 +52,26 @@ export default function CreateBooking() {
                     </select>
                 </div>
 
-                {/* Выбор даты */}
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm font-semibold text-gray-700">Дата банкета:</label>
+                <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-[#006400]">Дата банкета:</label>
                     <input 
                         type="date" 
                         name="event_date"
                         value={formData.event_date}
                         onChange={handleChange}
                         required
-                        className="border p-2 rounded bg-gray-50 focus:outline-blue-500"
+                        className="border border-[#DAA520]/50 p-3 rounded-xl bg-[#FFFDD0] focus:outline-none focus:ring-2 focus:ring-[#DAA520]"
                     />
-                    <span className="text-xs text-gray-400">В формате ДД.ММ.ГГГГ</span>
+                    <span className="text-xs text-[#006400]/70">Укажите желаемую дату мероприятия</span>
                 </div>
 
-                {/* Выпадающий список оплаты */}
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm font-semibold text-gray-700">Способ оплаты:</label>
+                <div className="flex flex-col gap-2">
+                    <label className="text-sm font-semibold text-[#006400]">Способ оплаты:</label>
                     <select 
                         name="payment_method" 
                         value={formData.payment_method} 
                         onChange={handleChange}
-                        className="border p-2 rounded bg-gray-50 focus:outline-blue-500"
+                        className="border border-[#DAA520]/50 p-3 rounded-xl bg-[#FFFDD0] focus:outline-none focus:ring-2 focus:ring-[#DAA520] text-gray-800"
                     >
                         <option value="Наличные">Наличные</option>
                         <option value="Банковская карта">Банковская карта</option>
@@ -84,7 +79,7 @@ export default function CreateBooking() {
                     </select>
                 </div>
 
-                <button type="submit" className="bg-blue-600 text-white p-3 rounded-lg mt-4 font-semibold hover:bg-blue-700 transition-colors">
+                <button type="submit" className="bg-[#DAA520] text-white p-4 rounded-2xl mt-4 font-semibold text-lg hover:bg-[#C8B61D] active:scale-95 transition-all shadow-md">
                     Отправить на согласование
                 </button>
             </form>

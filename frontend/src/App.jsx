@@ -11,10 +11,10 @@ function App() {
       {/* Внешний фон. На телефоне он будет скрыт под приложением, а на ПК будет красивым фоном */}
       <div className="flex justify-center min-h-screen bg-slate-200 sm:py-6 sm:px-4">
         
-        <div className="w-full max-w-[390px] min-h-[100dvh] sm:min-h-[844px] bg-slate-50 relative flex flex-col sm:rounded-[30px] sm:shadow-2xl overflow-hidden">
+        <div className="w-full max-w-[390px] min-h-[100dvh] sm:min-h-[844px] bg-gradient-to-b from-[#FFDAB9] to-[#FFFDD0] relative flex flex-col sm:rounded-[30px] sm:shadow-2xl overflow-hidden">
           
           {/* Наша стеклянная шапка (оставляем, она дает стиль iOS) */}
-          <header className="pt-4 pb-3 px-4 text-center font-bold text-lg sticky top-0 z-40 bg-white/75 backdrop-blur-md border-b border-slate-200/60 text-slate-800 flex items-center justify-center gap-2">
+          <header className="pt-4 pb-3 px-4 text-center font-bold text-lg sticky top-0 z-40 bg-[#DAA520]/80 backdrop-blur-md border-b border-[#DC143C]/50 text-[#DC143C] flex items-center justify-center gap-2">
             <span className="text-xl">🥂</span> Банкетам.Нет
           </header>
 
